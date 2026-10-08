@@ -263,12 +263,14 @@ Manfaat interface dalam program ini:
 
 **1. Menu Utama**
 Tampilan awal saat program dijalankan. Terdapat 5 pilihan menu; dummy data sudah otomatis tersedia di memori.
+
 <img width="470" height="207" alt="image" src="https://github.com/user-attachments/assets/06691a50-b5ec-42ff-b5d1-5a74963daf8a" />
 
 
 ----
 **2. Fitur Read — Menampilkan Dummy Data Awal**
 Saat memilih menu 2, tabel langsung menampilkan 2 data dummy (Boni – Jantan, Sisi – Betina) tanpa input manual. Kolom Kategori, Gender, dan Info Tambahan adalah hasil method overriding (polymorphism).
+
 <img width="1376" height="377" alt="image" src="https://github.com/user-attachments/assets/438f41b8-b2d0-4c9b-8ee0-5ba1c2806320" />
 
 
@@ -276,6 +278,7 @@ Saat memilih menu 2, tabel langsung menampilkan 2 data dummy (Boni – Jantan, S
 ----
 **3. Fitur Create Jantan — Validasi Input**
 Contoh registrasi Orangutan Jantan. Sengaja dimasukkan input yang salah lebih dulu: jenis kelamin `8` dan wilayah `abc` — program menolak dan meminta ulang (do-while + try-catch) sampai input benar (pilih 1, lalu isi Cheek Pads).
+
 <img width="455" height="387" alt="image" src="https://github.com/user-attachments/assets/0352b6d4-b502-4e22-b0fe-3bd928d6df0b" />
 
 <img width="455" height="340" alt="image" src="https://github.com/user-attachments/assets/b95ef160-44fa-4a9f-a0eb-0c4ea36e3f0a" />
@@ -286,18 +289,21 @@ Contoh registrasi Orangutan Jantan. Sengaja dimasukkan input yang salah lebih du
 ----
 **4. Fitur Create Betina — Registrasi Orangutan Betina**
 Pengisian data Betina: nama, umur, jenis kelamin (pilih 2), lalu Jumlah Anak.
+
 <img width="492" height="442" alt="image" src="https://github.com/user-attachments/assets/797ec475-5c87-49e6-8644-a82152957ac2" />
 
 
 ----
 **5. Fitur Read — Setelah Penambahan Data**
 Seluruh data (dummy + baru) tampil. Kolom Info Tambahan Jantan (Cheek Pads) dan Betina (Jumlah Anak) berbeda — bukti polymorphism bekerja.
+
 <img width="1222" height="377" alt="image" src="https://github.com/user-attachments/assets/99d71713-01c0-4254-b63e-aca89add9533" />
 
 
 ----
 **6. Fitur Update — Memilih ID & Submenu**
 User memilih menu 3, memasukkan ID catatan (mis. C2), lalu muncul submenu update [1-6].
+
 <img width="1227" height="563" alt="image" src="https://github.com/user-attachments/assets/b5bfb58b-5381-4acf-82e6-274fa00f6f1b" />
 
 
@@ -320,6 +326,7 @@ Opsi 5. Pilih status baru [1-4]; input di luar rentang ditolak. Perhatikan opsi 
 ----
 **9. Fitur Delete — Menghapus Data**
 Menu 4: masukkan ID (mis. C2) → data dihapus dari ArrayList, muncul pesan sukses, dan tabel berikutnya sudah tidak memuat data tersebut.
+
 <img width="1227" height="357" alt="image" src="https://github.com/user-attachments/assets/e7d452aa-b173-4194-84a7-874323f5a6ad" />
 
 <img width="1216" height="606" alt="image" src="https://github.com/user-attachments/assets/3eafa819-d6d1-4fb8-9723-61141f708222" />
@@ -328,6 +335,7 @@ Menu 4: masukkan ID (mis. C2) → data dihapus dari ArrayList, muncul pesan suks
 ----
 **10. Keluar Program**
 Menu 5: pesan penutup ditampilkan, Scanner ditutup, program berakhir.
+
 <img width="595" height="352" alt="image" src="https://github.com/user-attachments/assets/317771bf-e544-4c6f-8512-526023a8ec31" />
 
 
