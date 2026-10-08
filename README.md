@@ -185,7 +185,7 @@ Kombinasi private + getter/setter inilah yang membuat Encapsulation (bagian 4) b
 ---
 
 ## 10. Penerapan Interface
-nterface adalah "kontrak" berisi method-method kosong (tanpa body) yang harus diimplementasikan oleh class manapun yang menggunakannya. Berbeda dengan inheritance (yang dibatasi satu superclass), satu class bisa mengimplementasikan banyak interface sekaligus.
+Interface adalah "kontrak" berisi method-method kosong (tanpa body) yang harus diimplementasikan oleh class manapun yang menggunakannya. Berbeda dengan inheritance (yang dibatasi satu superclass), satu class bisa mengimplementasikan banyak interface sekaligus.
 
 Dalam program ini, interface diterapkan dengan mendefinisikan kontrak operasi CRUD dan kontrak tampilan data, sehingga Controller diwajibkan menyediakan seluruh operasi tersebut:
 
