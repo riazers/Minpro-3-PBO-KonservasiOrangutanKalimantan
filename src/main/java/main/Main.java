@@ -9,8 +9,6 @@ import view.KonservasiView;
 
 /**
  * ENTRY POINT program.
- * Menginisialisasi View & Controller, lalu menjalankan loop menu utama.
- *
  * @author riaza
  */
 public class Main {

@@ -8,8 +8,6 @@ import java.util.Scanner;
 
 /**
  * VIEW: menangani seluruh tampilan (output) dan input dari user.
- * Menerapkan validasi input untuk integer dan string.
- *
  * @author riaza
  */
 public class KonservasiView {
