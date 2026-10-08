@@ -33,14 +33,10 @@ public class KonservasiController {
 
     // DUMMY DATA AWAL (minimal 1) 
     private void inisialisasiDataAwal() {
-        Orangutan o1 = new OrangutanJantan("ID-001", "Boni", 12, 18.5);
-        LokasiHabitat l1 = new LokasiHabitat("LOC-01", "TN Tanjung Puting", "Kalimantan Tengah", "Taman Nasional");
-        daftarKonservasi.add(new CatatanRehabilitasi("C" + counter++, o1, l1, "Sekolah Hutan"));
-
-        Orangutan o2 = new OrangutanBetina("ID-002", "Sisi", 8, 1);
-        LokasiHabitat l2 = new LokasiHabitat("LOC-02", "TN Sebangau", "Kalimantan Tengah", "Taman Nasional");
-        daftarKonservasi.add(new CatatanRehabilitasi("C" + counter++, o2, l2, "Pra-Rilis"));
-    }
+    Orangutan o1 = new OrangutanJantan("ID-001", "Boni", 12, 18.5);
+    Orangutan o2 = new OrangutanBetina("ID-002", "Sisi", 8); // overloading: tanpa data anak
+    // ... sisanya tetap sama
+}
 
     // CREATE 
     public void tambahData() {

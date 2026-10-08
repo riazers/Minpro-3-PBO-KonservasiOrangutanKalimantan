@@ -18,22 +18,20 @@ public class OrangutanBetina extends Orangutan {
         this.jumlahAnak = jumlahAnak;
     }
 
+    // OVERLOADING: betina tanpa data anak
+    public OrangutanBetina(String idOrangutan, String nama, int umurTahun) {
+        this(idOrangutan, nama, umurTahun, 0);
+    }
+
     public int getJumlahAnak() { return jumlahAnak; }
     public void setJumlahAnak(int jumlahAnak) { this.jumlahAnak = jumlahAnak; }
 
-    // Polymorphism: Method Overriding 
     @Override
-    public String getJenisKelamin() {
-        return "Betina";
-    }
+    public String getJenisKelamin() { return "Betina"; }
 
     @Override
-    public String getKategori() {
-        return "Orangutan Betina";
-    }
+    public String getKategori() { return "Orangutan Betina"; }
 
     @Override
-    public String getInfoTambahan() {
-        return "Jumlah Anak: " + jumlahAnak;
-    }
+    public String getInfoTambahan() { return "Jumlah Anak: " + jumlahAnak; }
 }
