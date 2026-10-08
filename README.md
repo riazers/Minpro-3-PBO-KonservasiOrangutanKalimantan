@@ -8,17 +8,18 @@
 </p>
 
 ## Daftar Isi
-### - [1 Deskripsi Program](#deskripsi-program) 
-### - [2 Penjelasan Alur Program](#penjelasan-alur-program)
-### - [3 Struktur Package (Model-View-Controller)](#struktur-package-mvc)
-### - [4 Penerapan Encapsulation](#penerapan-encapsulation)
-### - [5 Penerapan Inheritance](#penerapan-inheritance)
-### - [6 Penerapan Polymorphism](#penerapan-polymorphism)
-### - [7 Penerapan Validasi Input](#penerapan-validasi-input)
-### - [8 Penerapan Abstraction](#penerapan-abstraction)
-### - [9 Penerapan Access Modifer](penerapan-access-modifier)
-### - [10 Penerapan Interface](penerapan-interface)
-### - [11 Output Program](#output-program)
+### - [1. Deskripsi Program](1.-deskripsi-program) 
+### - [2. Penjelasan Alur Program](2.-penjelasan-alur-program)
+### - [3. Struktur Package (Model-View-Controller)](3.-struktur-package-mvc)
+### - [4. Penerapan Encapsulation](4.-penerapan-encapsulation)
+### - [5. Penerapan Inheritance](5.-penerapan-inheritance)
+### - [6. Penerapan Polymorphism](6.-penerapan-polymorphism)
+### - [7. Penerapan Validasi Input](7.-penerapan-validasi-input)
+### - [8. Penerapan Abstraction](8.-penerapan-abstraction)
+### - [9. Penerapan Access Modifer](9.-penerapan-access-modifier)
+### - [10. Penerapan Interface](10.-penerapan-interface)
+### - [11. Output Program](11.-output-program)
+### - [12. Kesimpulan](12.-kesimpulan)
 
 ## 1. Deskripsi Program
 **Sistem Konservasi & Rehabilitasi Orangutan Kalimantan** adalah aplikasi berbasis **Java CLI** lanjutan yang dikembangkan dari **Mini Project 1**. Program ini digunakan untuk mendata, memantau, dan mengelola tahapan rehabilitasi orangutan di berbagai Taman Nasional di Pulau Kalimantan. Program menerapkan **CRUD penuh** dengan pendekatan **Object-Oriented Programming (OOP)** serta **arsitektur MVC (Model–View–Controller)**.
@@ -29,17 +30,33 @@ Pada Mini Project 2 ini ditambahkan:
 - **Struktur MVC**: pemisahan `model`, `view`, `controller`, `main`.
 - **Dummy data awal**: 2 data orangutan langsung tampil saat fitur Read pertama kali dibuka.
 
+
 ## 2. Penjelasan Alur Program
-1. **Start** -> `Main` membuat `KonservasiView` dan `KonservasiController`. Controller otomatis mengisi **2 dummy data** ke ArrayList.
-2. **Menu Utama (loop `do-while`)** → Menampilkan 5 pilihan. Program berhenti hanya jika user memilih **5. Keluar**.
-3. **Create** -> User memasukkan nama, umur, jenis kelamin. Jika **Jantan**, diminta `cheek pads`; jika **Betina**, diminta `jumlah anak`. Objek dibuat sebagai `OrangutanJantan` / `OrangutanBetina` (polymorphic). Data disimpan dengan ID `C1`, `C2`, dst.
-4. **Read** -> Menampilkan seluruh data dalam tabel (perulangan `for-each`). Kolom **Kategori**, **Gender**, dan **Info Tambahan** diambil dari method yang di-*override* (polymorphism).
-5. **Update** -> User memilih ID, lalu masuk submenu update yang dapat mengubah:
-   - Nama, Umur
-   - Info khusus (Cheek Pads / Jumlah Anak) — menggunakan `instanceof` + casting
-   - Lokasi, Status
-6. **Delete** -> Menghapus data berdasarkan ID.
-7. **Keluar** -> Program berhenti.
+
+**a. Inisialisasi** → Saat `Main` dijalankan, ia membuat objek `KonservasiView` lalu `KonservasiController`. Di dalam constructor Controller, method `inisialisasiDataAwal()` otomatis mengisi **2 dummy data** (Boni – Jantan, Sisi – Betina) ke `ArrayList<CatatanRehabilitasi>`.
+
+**b. Menu Utama (loop do-while)** → Menu ditampilkan berulang-ulang. Program hanya berhenti jika user memilih **5. Keluar**. Input menu divalidasi `inputInteger()`, sehingga mengetik huruf tidak membuat program crash.
+
+**c. Create (Menu 1)** →
+1. User memasukkan Nama (divalidasi tidak boleh kosong) dan Umur (wajib angka).
+2. Program meminta jenis kelamin **[1/2] dalam perulangan do-while** — input di luar 1/2 ditolak dan diminta ulang.
+3. Jika **Jantan** → diminta Ukuran Cheek Pads (desimal); jika **Betina** → diminta Jumlah Anak. Objek dibuat sebagai `OrangutanJantan` / `OrangutanBetina` (polymorphism).
+4. User memilih Wilayah **[1-4]** dan Status **[1-4]** — keduanya juga divalidasi dengan perulangan.
+5. Catatan tersimpan dengan ID otomatis `C1`, `C2`, dst., lalu muncul pesan sukses.
+
+**d. Read (Menu 2)** → Seluruh isi ArrayList dicetak sebagai tabel (perulangan `for-each`). Kolom **Kategori**, **Gender**, dan **Info Tambahan** diambil dari method yang di-override subclass.
+
+**e. Update (Menu 3)** →
+1. Tabel ditampilkan dulu, lalu user memasukkan ID catatan. Jika ID tidak ditemukan, muncul pesan error dan kembali ke menu utama.
+2. Jika ditemukan, muncul **submenu update [1-6]** (Nama, Umur, Info Khusus, Lokasi, Status, Selesai) yang berulang sampai user memilih 6.
+3. Opsi 3 memakai `instanceof` + casting: Jantan → minta cheek pads baru; Betina → minta jumlah anak baru.
+4. Setiap perubahan sukses ditampilkan pesan konfirmasi.
+
+**f. Delete (Menu 4)** → Tabel ditampilkan, user memasukkan ID. Jika ditemukan, data dihapus dari ArrayList dan muncul pesan sukses; jika tidak, muncul pesan error.
+
+**g. Keluar (Menu 5)** → Program menampilkan pesan penutup, Scanner ditutup (`closeScanner()`), dan loop berakhir.
+
+---
 
 ## 3. Struktur Package (MVC)
 
@@ -245,63 +262,88 @@ Manfaat interface dalam program ini:
 ## 11. Output Program
 
 **1. Menu Utama**
-Tampilan awal saat program dijalankan. Terlihat 5 pilihan menu dan dummy data sudah tersedia di memori.
+Tampilan awal saat program dijalankan. Terdapat 5 pilihan menu; dummy data sudah otomatis tersedia di memori.
+<img width="470" height="207" alt="image" src="https://github.com/user-attachments/assets/06691a50-b5ec-42ff-b5d1-5a74963daf8a" />
 
-<img width="462" height="205" alt="image" src="https://github.com/user-attachments/assets/e9f513d5-ff18-402b-8e96-6c9d03cf62d8" />
 
 ----
-**2. Fitur Read** – Menampilkan Dummy Data Awal
-Saat memilih menu 2, tabel langsung menampilkan 2 data dummy (Boni – Jantan, Sisi – Betina) tanpa perlu input manual. Kolom Kategori, Gender, dan Info Tambahan diambil dari method yang di-override (polymorphism).
+**2. Fitur Read — Menampilkan Dummy Data Awal**
+Saat memilih menu 2, tabel langsung menampilkan 2 data dummy (Boni – Jantan, Sisi – Betina) tanpa input manual. Kolom Kategori, Gender, dan Info Tambahan adalah hasil method overriding (polymorphism).
+<img width="1376" height="377" alt="image" src="https://github.com/user-attachments/assets/438f41b8-b2d0-4c9b-8ee0-5ba1c2806320" />
 
-<img width="1207" height="180" alt="image" src="https://github.com/user-attachments/assets/7ea2a8bd-7c9b-49bb-a968-e5e862b16069" />
 
-----
-**3. Fitur Create Jantan** – Registrasi Orangutan Jantan
-
-Contoh pengisian data untuk orangutan Jantan. User diminta mengisi nama, umur, jenis kelamin (pilih 1), lalu Ukuran Cheek Pads. Setelah selesai, data tersimpan dengan ID C3 (atau sesuai counter).
-
-<img width="500" height="512" alt="image" src="https://github.com/user-attachments/assets/fb94a413-f9c8-4ab8-bb50-9c1f33fe6bfb" />
 
 ----
-**4. Fitur Create Betina** – Registrasi Orangutan Betina
+**3. Fitur Create Jantan — Validasi Input**
+Contoh registrasi Orangutan Jantan. Sengaja dimasukkan input yang salah lebih dulu: jenis kelamin `8` dan wilayah `abc` — program menolak dan meminta ulang (do-while + try-catch) sampai input benar (pilih 1, lalu isi Cheek Pads).
+<img width="455" height="387" alt="image" src="https://github.com/user-attachments/assets/0352b6d4-b502-4e22-b0fe-3bd928d6df0b" />
 
-Contoh pengisian data untuk orangutan Betina. User diminta mengisi nama, umur, jenis kelamin (pilih 2), lalu Jumlah Anak.
+<img width="455" height="340" alt="image" src="https://github.com/user-attachments/assets/b95ef160-44fa-4a9f-a0eb-0c4ea36e3f0a" />
 
-<img width="492" height="462" alt="image" src="https://github.com/user-attachments/assets/00fea83c-db6b-4db3-9fec-f896fe8c2c7c" />
+<img width="486" height="340" alt="image" src="https://github.com/user-attachments/assets/6786a67a-abdc-4877-ad7d-c6c70ac366a0" />
+
 
 ----
-**5. Fitur Read** – Setelah Penambahan Data
-Menampilkan kembali seluruh data (dummy + data baru). Perhatikan kolom Kategori dan Info Tambahan yang berbeda antara Jantan dan Betina (hasil polymorphism).
+**4. Fitur Create Betina — Registrasi Orangutan Betina**
+Pengisian data Betina: nama, umur, jenis kelamin (pilih 2), lalu Jumlah Anak.
+<img width="492" height="442" alt="image" src="https://github.com/user-attachments/assets/797ec475-5c87-49e6-8644-a82152957ac2" />
 
-<img width="1222" height="225" alt="image" src="https://github.com/user-attachments/assets/8780b949-3927-4140-9e98-f9b4d40e6ddb" />
 
 ----
-**6. Fitur Update** – Memilih ID dan Menampilkan Submenu
-Contoh saat memilih menu 3. User memasukkan ID catatan (misal C2), lalu muncul submenu update yang bisa mengubah seluruh entitas.
+**5. Fitur Read — Setelah Penambahan Data**
+Seluruh data (dummy + baru) tampil. Kolom Info Tambahan Jantan (Cheek Pads) dan Betina (Jumlah Anak) berbeda — bukti polymorphism bekerja.
+<img width="1222" height="377" alt="image" src="https://github.com/user-attachments/assets/99d71713-01c0-4254-b63e-aca89add9533" />
 
-<img width="1208" height="426" alt="image" src="https://github.com/user-attachments/assets/d4df9b71-c657-4b8b-b739-edb4bea018ec" />
 
 ----
-**7. Fitur Update** – Mengubah Info Khusus (Cheek Pads / Jumlah Anak)
-Contoh ketika memilih opsi 3 pada submenu update. Program mendeteksi tipe runtime (instanceof) dan meminta input yang sesuai (cheek pads untuk Jantan, jumlah anak untuk Betina).
+**6. Fitur Update — Memilih ID & Submenu**
+User memilih menu 3, memasukkan ID catatan (mis. C2), lalu muncul submenu update [1-6].
+<img width="1227" height="563" alt="image" src="https://github.com/user-attachments/assets/b5bfb58b-5381-4acf-82e6-274fa00f6f1b" />
 
-<img width="507" height="471" alt="image" src="https://github.com/user-attachments/assets/9fe57687-065c-42c9-913a-3d9a0aba6ba9" />
 
 ----
-8. Fitur Update – Mengubah Status Kesehatan
-Contoh ketika memilih opsi 5 pada submenu update. User memilih status baru dari 4 pilihan yang tersedia.
+**7. Fitur Update — Mengubah Info Khusus (instanceof + casting)**
+Opsi 3 mendeteksi tipe runtime: Jantan → cheek pads baru; Betina → jumlah anak baru.
 
-<img width="407" height="327" alt="image" src="https://github.com/user-attachments/assets/be0a300b-c928-4b8a-941b-67ff702adb56" />
+<img width="397" height="240" alt="image" src="https://github.com/user-attachments/assets/891e9965-09b7-40d0-bada-fe8635c5fbb6" />
+
+<img width="392" height="236" alt="image" src="https://github.com/user-attachments/assets/9107794f-3f6a-41c3-9a97-945036d3a3bb" />
 
 
-9. Fitur Delete – Menghapus Data
-Contoh saat memilih menu 4. User memasukkan ID yang ingin dihapus (misal C2), lalu program menghapus data dari ArrayList dan menampilkan pesan sukses.
+----
+**8. Fitur Update — Mengubah Status Kesehatan**
+Opsi 5. Pilih status baru [1-4]; input di luar rentang ditolak. Perhatikan opsi 4 kini tersimpan sebagai **"Liar / Rilis Penuh"** sesuai teks menu (perbaikan bug Mini Project 2).
 
-<img width="1215" height="228" alt="image" src="https://github.com/user-attachments/assets/97aece09-9bb5-4c25-ab69-9d581911d48a" />
+<img width="405" height="347" alt="image" src="https://github.com/user-attachments/assets/4134a55e-1658-4cc3-ac36-f1af0c69eb7d" />
 
-<img width="1212" height="160" alt="image" src="https://github.com/user-attachments/assets/43667267-643b-4d52-8594-807a35b16258" />
-After
-10. Keluar Program
-Tampilan saat user memilih menu 5. Program menampilkan pesan penutup dan berhenti.
 
-<img width="587" height="347" alt="image" src="https://github.com/user-attachments/assets/a44deaba-fbce-4d9f-b457-e29987801058" />
+----
+**9. Fitur Delete — Menghapus Data**
+Menu 4: masukkan ID (mis. C2) → data dihapus dari ArrayList, muncul pesan sukses, dan tabel berikutnya sudah tidak memuat data tersebut.
+<img width="1227" height="357" alt="image" src="https://github.com/user-attachments/assets/e7d452aa-b173-4194-84a7-874323f5a6ad" />
+
+<img width="1216" height="606" alt="image" src="https://github.com/user-attachments/assets/3eafa819-d6d1-4fb8-9723-61141f708222" />
+
+
+----
+**10. Keluar Program**
+Menu 5: pesan penutup ditampilkan, Scanner ditutup, program berakhir.
+<img width="595" height="352" alt="image" src="https://github.com/user-attachments/assets/317771bf-e544-4c6f-8512-526023a8ec31" />
+
+
+## 12. Kesimpulan
+
+Sistem Konservasi & Rehabilitasi Orangutan Kalimantan pada Mini Project 3 ini berhasil dikembangkan dari Mini Project sebelumnya dengan menerapkan seluruh ketentuan dan nilai tambah secara lengkap:
+
+- **Inheritance** — Orangutan sebagai superclass dengan 2 subclass OrangutanJantan dan OrangutanBetina, melalui keyword extends dan super(...).
+- **Polymorphism** — method getJenisKelamin(), getKategori(), dan getInfoTambahan() di-override oleh subclass, dipanggil melalui referensi superclass tanpa tahu tipe  konkretnya; ditambah casting runtime (instanceof) pada fitur update.
+- **Validasi** input dua lapis — tipe data ditangani try-catch di KonservasiView, sedangkan rentang pilihan (jenis kelamin [1/2], wilayah [1-4], status [1-4]) ditangani perulangan do-while di KonservasiController agar input salah selalu diminta ulang, tidak "jatuh" ke pilihan default.
+- **Abstraction** — melalui penyembunyian detail implementasi di balik method publik dan pemisahan tanggung jawab peran dalam arsitektur MVC.
+- **Access Modifier** — private untuk seluruh atribut, public untuk method lintas package, dan default (package-private) untuk inner class CatatanRehabilitasiWrapper.
+- **Nilai tambah: Interface** — KonservasiInterface berisi kontrak CRUD yang diimplementasikan KonservasiController dengan implements, menjamin seluruh operasi tersedia sejak kompilasi dan memperkuat loose coupling dengan Main.
+- **Arsitektur MVC** — pemisahan model, view, controller, dan main membuat kode mudah dirawat dan dikembangkan.
+
+**Perbaikan spesifik dari Mini Project 2 juga telah diterapkan: teks opsi 4 pada pilihStatus() kini tersimpan sebagai "Liar / Rilis Penuh" sesuai teks menu, dan bug input di luar rentang kini tertangani oleh perulangan validasi.**
+
+**Seluruh fitur CRUD berjalan baik — data dapat dibuat (Create), ditampilkan dalam format tabel (Read), diperbarui melalui submenu (Update), dan dihapus berdasarkan ID (Delete) — dengan 2 dummy data otomatis tersedia sejak program dijalankan.** Dengan demikian, tujuan Mini Project 3 — penguasaan konsep OOP lanjutan (inheritance, polymorphism, abstraction, access modifier, validasi, interface) dalam kerangka MVC — telah tercapai secara penuh.
+
